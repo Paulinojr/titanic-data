@@ -1,6 +1,6 @@
 import { Passenger } from "./Passenger";
 
-export const passengers: Passenger[] = [
+export const passengerData: Passenger[] = [
   {
     "passengerId": 1,
     "survived": 0,

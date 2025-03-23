@@ -1,0 +1,5 @@
+1. Application initial setup with Vite. Choice was React with Typescript.
+2. Created "data" layer with Passenger type.
+3. Converted the Passenger data CSV to JSON. (https://csvjson.com/csv2json).
+4. Made some low-fidelity wireframe prototypes with figma (files at 'wireframes' folder).
+5. 
