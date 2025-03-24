@@ -1,35 +1,41 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useState, useEffect } from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Sidebar from "./components/Sidebar/Sidebar";
+import { passengers } from "./data/titanic-passengers";
+import styled from "styled-components";
 
-function App() {
-  const [count, setCount] = useState(0)
+const MainContent = styled.div<{ $sidebarOpen: boolean; $isMobile: boolean }>`
+  margin-left: ${({ $isMobile, $sidebarOpen }) =>
+    $isMobile ? "0" : $sidebarOpen ? "20%" : "60px"};
+  padding: 1rem;
+  transition: margin-left 0.3s ease;
+`;
 
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+const App: React.FC = () => {
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  return(
+    <Router>
+      <div style={{ display: "flex" }}>
+        <Sidebar isMobile={isMobile} />
+
+        <MainContent $sidebarOpen={true} $isMobile={isMobile}>
+          <Routes>
+            <Route path="/" element={<></>} />
+          </Routes>
+        </MainContent>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    </Router>
+  );
+};
 
-export default App
+export default App;
