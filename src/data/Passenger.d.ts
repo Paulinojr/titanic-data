@@ -4,10 +4,10 @@ export type Passenger = {
   pclass: number;
   name: string;
   sex: string;
-  age: string;
-  sibSp: number;
+  age: number;
+  sibSP: number;
   parch: number;
-  ticket: number;
+  ticket: string;
   fare: number;
   cabin: string;
   embarked: string;

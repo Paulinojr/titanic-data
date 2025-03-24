@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Sidebar from "./components/Sidebar/Sidebar";
-import { passengers } from "./data/titanic-passengers";
+import { passengerData as passengers } from "./data/titanic-passengers";
+import DataTable from "./components/DataTable/DataTable";
 import styled from "styled-components";
 
 const MainContent = styled.div<{ $sidebarOpen: boolean; $isMobile: boolean }>`
@@ -30,7 +31,7 @@ const App: React.FC = () => {
 
         <MainContent $sidebarOpen={true} $isMobile={isMobile}>
           <Routes>
-            <Route path="/" element={<></>} />
+            <Route path="/" element={<DataTable data={passengers}></DataTable>} />
           </Routes>
         </MainContent>
       </div>
