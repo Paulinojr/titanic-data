@@ -6,10 +6,10 @@ import { StyledTable, TableContainer, Th, Td, PaginationContainer, PaginationBut
 interface DataTableProps {
   data: Passenger[];
   isMobile: boolean;
-  sidebarCollapsed: boolean; 
+  sidebarOpen: boolean; 
 }
 
-const DataTable: React.FC<DataTableProps> = ({ data, isMobile, sidebarCollapsed }) => {
+const DataTable: React.FC<DataTableProps> = ({ data, isMobile, sidebarOpen }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(10);
 
@@ -30,8 +30,7 @@ const DataTable: React.FC<DataTableProps> = ({ data, isMobile, sidebarCollapsed 
 
   return (
     <>
-
-      <TableContainer isMobile={isMobile} sidebarCollapsed={sidebarCollapsed}>
+      <TableContainer isMobile={isMobile} sidebarOpen={sidebarOpen}>
         <TopPaginationContainer>
           <div>
             <span>Items per page: </span>

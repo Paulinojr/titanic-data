@@ -2,16 +2,16 @@ import styled from "styled-components"
 
 interface TableContainerProps {
   isMobile: boolean;
-  sidebarCollapsed: boolean;
+  sidebarOpen: boolean;
 }
 
 export const TableContainer = styled.div<TableContainerProps>`
-  width: ${({ isMobile, sidebarCollapsed }) =>
+  width: ${({ isMobile, sidebarOpen }) =>
     isMobile
       ? "100vw"
-      : sidebarCollapsed
-      ? "calc(100vw - 60px)"
-      : "calc(100vw - 250px)"};
+      : sidebarOpen
+      ? "100%"
+      : "calc(100vw - 100px)"};
   overflow-x: auto;
   max-height: ${({ isMobile }) => (isMobile ? "70vh" : "none")};
   ${({ isMobile }) =>
@@ -26,12 +26,11 @@ export const TableContainer = styled.div<TableContainerProps>`
     -webkit-overflow-scrolling: touch;
     overscroll-behavior: contain; /* Prevent parent scrolling */
   `}
- 
   transition: all 0.3s ease;
 `;
 
 export const StyledTable = styled.table`
-  width: 100vw;
+  width: 100%;
   min-width: 600px;
   border-collapse: collapse;
   table-layout: fixed;

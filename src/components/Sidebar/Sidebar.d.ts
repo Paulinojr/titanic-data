@@ -1,7 +1,9 @@
+import { SetStateAction } from "react";
+
 export interface SidebarProps {
   isMobile?: boolean;
   isOpen?: boolean;
-  onCollapseToggle: (collapsed: boolean) => void;
+  setSidebarOpen?: (isOpen: boolean) => Dispatch<SetStateAction<boolean>>;
 }
 
 export interface SidebarLinkProps {

@@ -14,8 +14,7 @@ const MainContent = styled.div<{ $sidebarOpen: boolean; $isMobile: boolean }>`
 
 const App: React.FC = () => {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
-  const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
-
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   useEffect(() => {
     const handleResize = () => {
@@ -29,9 +28,9 @@ const App: React.FC = () => {
   return (
     <Router>
       <div style={{ display: "flex" }}>
-        <Sidebar isMobile={isMobile} onCollapseToggle={setSidebarCollapsed} />
+        <Sidebar isMobile={isMobile} setSidebarOpen={setSidebarOpen}/>
 
-        <MainContent $sidebarOpen={true} $isMobile={isMobile}>
+        <MainContent $sidebarOpen={sidebarOpen} $isMobile={isMobile}>
           <Routes>
             <Route
               path="/"
@@ -39,7 +38,7 @@ const App: React.FC = () => {
                 <DataTable
                   data={passengers}
                   isMobile={isMobile}
-                  sidebarCollapsed={sidebarCollapsed}
+                  sidebarOpen={sidebarOpen}
                 ></DataTable>
               }
             />
