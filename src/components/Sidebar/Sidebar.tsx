@@ -12,14 +12,15 @@ import { SidebarProps } from "./Sidebar.d";
 
 import { FaTimes, FaBars, FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
-const Sidebar: React.FC<SidebarProps> = ({ isMobile }) => {
+const Sidebar: React.FC<SidebarProps> = ({ isMobile, onCollapseToggle }) => {
   const [isOpen, setIsOpen] = useState(!isMobile);
   const [isCollapsed, setIsCollapsed] = useState(false);
 
   const toggleSidebar = () => setIsOpen(!isOpen);
   const toggleCollapse = () => {
-    setIsCollapsed(!isCollapsed)
-    setIsOpen(!isOpen)
+    setIsCollapsed(!isCollapsed);
+    setIsOpen(!isOpen);
+    onCollapseToggle(!isCollapsed);
   };
 
   const handleLinkClick = () => {

@@ -4,3 +4,4 @@
 4. Made some low-fidelity wireframe prototypes with figma (files at 'wireframes' folder).
 5. Installed styled-components and react-router
 6. Started developing the Sidebar component
+7. Developed DataTable component
