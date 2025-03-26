@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Passenger } from "../../data/Passenger";
 import { StyledTable, TableContainer, Th, Td, PaginationContainer, PaginationButton, TopPaginationContainer, ItemsPerPageSelect, PageIndicator } from "./DataTable.styles";
-
+import { PageTitle } from "../Common/Common.styles";
 
 interface DataTableProps {
   data: Passenger[];
@@ -16,7 +16,7 @@ const DataTable: React.FC<DataTableProps> = ({ data, isMobile, sidebarOpen }) =>
   // Data formatting functions
   const formatSurvived = (value: number) => value ? '✅' : '❌';
   const formatPclass = (value: number) => `Class ${value}`;
-  const formatFamilySize = (sibSp: number, parch: number) => sibSp + parch + 1;
+  const formatFamilySize = (sibSp: number, parch: number) => sibSp + parch;
 
   // Pagination logic
   const indexOfLastItem = currentPage * itemsPerPage;
@@ -31,6 +31,8 @@ const DataTable: React.FC<DataTableProps> = ({ data, isMobile, sidebarOpen }) =>
   return (
     <>
       <TableContainer isMobile={isMobile} sidebarOpen={sidebarOpen}>
+        <PageTitle>Titanic Data Table</PageTitle>
+
         <TopPaginationContainer>
           <div>
             <span>Items per page: </span>
@@ -60,7 +62,7 @@ const DataTable: React.FC<DataTableProps> = ({ data, isMobile, sidebarOpen }) =>
               <Th>Class</Th>
               <Th>Age</Th>
               <Th>Survived</Th>
-              <Th>Family Size</Th>
+              <Th>Family Size (Parch + SibSp)</Th>
             </tr>
           </thead>
           <tbody>
