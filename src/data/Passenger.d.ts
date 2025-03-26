@@ -4,11 +4,16 @@ export type Passenger = {
   pclass: number;
   name: string;
   sex: string;
-  age: number;
+  age: number | string;
   sibSP: number;
   parch: number;
-  ticket: string;
+  ticket: string | number;
   fare: number;
   cabin: string;
   embarked: string;
 };
+
+interface PassengerDataContextType {
+  passengers: Passenger[];
+  loading: boolean;
+}

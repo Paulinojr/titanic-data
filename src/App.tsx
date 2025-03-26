@@ -6,8 +6,8 @@ import {
   Navigate,
 } from "react-router-dom";
 import Sidebar from "./components/Sidebar/Sidebar";
-import { passengerData as passengers } from "./data/titanic-passengers";
 import styled from "styled-components";
+import { PassengerDataProvider } from "./context/PassengerDataContext";
 
 // components
 import LineGraph from "./components/LineGraph/LineGraph";
@@ -42,26 +42,35 @@ const App: React.FC = () => {
         <MainContent $sidebarOpen={sidebarOpen} $isMobile={isMobile}>
           <Routes>
             <Route path="/" element={<Navigate to="/data-table" />} />
-            
+
             <Route
               path="/data-table"
               element={
-                <DataTable
-                  data={passengers}
-                  isMobile={isMobile}
-                  sidebarOpen={sidebarOpen}
-                ></DataTable>
+                <PassengerDataProvider>
+                  <DataTable
+                    isMobile={isMobile}
+                    sidebarOpen={sidebarOpen}
+                  ></DataTable>
+                </PassengerDataProvider>
               }
             />
 
             <Route
               path="/line-graph"
-              element={<LineGraph passengers={passengers} />}
+              element={
+                <PassengerDataProvider>
+                  <LineGraph/>
+                </PassengerDataProvider>
+              }
             />
 
             <Route
               path="/histogram"
-              element={<Histogram passengers={passengers} />}
+              element={
+                <PassengerDataProvider>
+                  <Histogram />
+                </PassengerDataProvider>
+              }
             />
           </Routes>
         </MainContent>

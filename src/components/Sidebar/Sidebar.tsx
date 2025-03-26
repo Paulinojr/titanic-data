@@ -11,7 +11,6 @@ import {
 import { SidebarProps } from "./Sidebar.d";
 import { useLocation } from "react-router-dom";
 
-
 import { FaTimes, FaBars, FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 const Sidebar: React.FC<SidebarProps> = ({ isMobile, setSidebarOpen }) => {

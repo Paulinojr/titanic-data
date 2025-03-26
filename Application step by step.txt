@@ -7,3 +7,5 @@
 7. Developed DataTable component
 8. Developed LineGraph using plotly
 9. Developed Histogram using plotly
+10. Add "Active" logic on sidebar items
+11. Add Context API to simulate REST API architecture
