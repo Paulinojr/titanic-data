@@ -1,6 +1,6 @@
 import React from "react";
 import Plot from "react-plotly.js";
-import { PageTitle } from "../Common/Common.styles";
+import { PageTitle, PlotDiv } from "../Common/Common.styles";
 import { usePassengerData } from "../../context/PassengerDataContext";
 
 
@@ -16,7 +16,7 @@ const LineGraph: React.FC = () => {
   const sortedData = [...validPassengers].sort((a, b) => Number(a.age) - Number(b.age));
 
   return (
-    <div style={{ width: "80vw", height: "100%", padding: "1rem" }}>
+    <PlotDiv>
       <PageTitle>Titanic Line Graph</PageTitle>
 
       {loading && <div>Loading...</div>}
@@ -58,7 +58,7 @@ const LineGraph: React.FC = () => {
         style={{ width: "100%", height: "100vh" }}
       />
       )}
-    </div>
+    </PlotDiv>
   );
 };
 

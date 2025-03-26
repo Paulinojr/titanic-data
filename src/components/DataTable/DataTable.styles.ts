@@ -1,16 +1,13 @@
 import styled from "styled-components"
+import { TableContainerProps } from "./DataTable.d"
 
-interface TableContainerProps {
-  isMobile: boolean;
-  sidebarOpen: boolean;
-}
 
 export const TableContainer = styled.div<TableContainerProps>`
   width: ${({ isMobile, sidebarOpen }) =>
     isMobile
       ? "100vw"
       : sidebarOpen
-      ? "100%"
+      ? "calc(100% - 200px)"
       : "calc(100vw - 100px)"};
   overflow-x: auto;
   max-height: ${({ isMobile }) => (isMobile ? "70vh" : "none")};

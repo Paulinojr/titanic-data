@@ -1,7 +1,8 @@
 import React from "react";
 import Plot from "react-plotly.js";
-import { PageTitle } from "../Common/Common.styles";
+import { PageTitle, PlotDiv } from "../Common/Common.styles";
 import { usePassengerData } from "../../context/PassengerDataContext";
+
 
 const Histogram: React.FC = () => {
   const { passengers, loading } = usePassengerData();
@@ -16,7 +17,7 @@ const Histogram: React.FC = () => {
   }));
 
   return (
-    <div style={{ width: "80vw", height: "100%", padding: "1rem" }}>
+    <PlotDiv>
       <PageTitle>Titanic Histogram</PageTitle>
 
       {loading && <div>Loading...</div>}
@@ -63,10 +64,10 @@ const Histogram: React.FC = () => {
             showlegend: true,
           }}
           config={{ responsive: true }}
-          style={{ width: "100%", height: "100vh" }}
+          style={{ width: "100%", height: "85vh" }}
         />
       )}
-    </div>
+    </PlotDiv>
   );
 };
 

@@ -10,13 +10,9 @@ import {
   ItemsPerPageSelect,
   PageIndicator,
 } from "./DataTable.styles";
-import { PageTitle } from "../Common/Common.styles";
+import { PageTitle, PlotDiv } from "../Common/Common.styles";
 import { usePassengerData } from "../../context/PassengerDataContext";
-
-interface DataTableProps {
-  isMobile: boolean;
-  sidebarOpen: boolean;
-}
+import { DataTableProps } from "./DataTable.d";
 
 const DataTable: React.FC<DataTableProps> = ({ isMobile, sidebarOpen }) => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -40,7 +36,7 @@ const DataTable: React.FC<DataTableProps> = ({ isMobile, sidebarOpen }) => {
   };
 
   return (
-    <>
+    <PlotDiv>
       <TableContainer isMobile={isMobile} sidebarOpen={sidebarOpen}>
         <PageTitle>Titanic Data Table</PageTitle>
         {loading && <div>Loading...</div>}
@@ -145,7 +141,7 @@ const DataTable: React.FC<DataTableProps> = ({ isMobile, sidebarOpen }) => {
           </>
         )}
       </TableContainer>
-    </>
+    </PlotDiv>
   );
 };
 

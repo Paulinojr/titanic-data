@@ -2,10 +2,11 @@
 2. Created "data" layer with Passenger type.
 3. Converted the Passenger data CSV to JSON. (https://csvjson.com/csv2json).
 4. Made some low-fidelity wireframe prototypes with figma (files at 'wireframes' folder).
-5. Installed styled-components and react-router
-6. Started developing the Sidebar component
-7. Developed DataTable component
-8. Developed LineGraph using plotly
-9. Developed Histogram using plotly
-10. Add "Active" logic on sidebar items
-11. Add Context API to simulate REST API architecture
+5. Installed styled-components and react-router.
+6. Started developing the Sidebar component.
+7. Developed DataTable component.
+8. Developed LineGraph using plotly.
+9. Developed Histogram using plotly.
+10. Add "Active" logic on sidebar items.
+11. Add Context API to simulate REST API architecture.
+12. General tweaks and improvements like centralizing data and styled-components.

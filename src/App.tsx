@@ -6,20 +6,13 @@ import {
   Navigate,
 } from "react-router-dom";
 import Sidebar from "./components/Sidebar/Sidebar";
-import styled from "styled-components";
 import { PassengerDataProvider } from "./context/PassengerDataContext";
 
 // components
 import LineGraph from "./components/LineGraph/LineGraph";
 import DataTable from "./components/DataTable/DataTable";
 import Histogram from "./components/Histogram/Histogram";
-
-const MainContent = styled.div<{ $sidebarOpen: boolean; $isMobile: boolean }>`
-  margin-left: ${({ $isMobile, $sidebarOpen }) =>
-    $isMobile ? "0" : $sidebarOpen ? "20%" : "60px"};
-  padding: 1rem;
-  transition: margin-left 0.3s ease;
-`;
+import { MainContent, FlexDiv } from "./components/Common/Common.styles";
 
 const App: React.FC = () => {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
@@ -36,10 +29,10 @@ const App: React.FC = () => {
 
   return (
     <Router>
-      <div style={{ display: "flex" }}>
+      <FlexDiv>
         <Sidebar isMobile={isMobile} setSidebarOpen={setSidebarOpen} />
 
-        <MainContent $sidebarOpen={sidebarOpen} $isMobile={isMobile}>
+        <MainContent sidebarOpen={sidebarOpen} isMobile={isMobile}>
           <Routes>
             <Route path="/" element={<Navigate to="/data-table" />} />
 
@@ -74,7 +67,7 @@ const App: React.FC = () => {
             />
           </Routes>
         </MainContent>
-      </div>
+      </FlexDiv>
     </Router>
   );
 };
