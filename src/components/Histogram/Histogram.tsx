@@ -3,18 +3,71 @@ import Plot from "react-plotly.js";
 import { PageTitle, PlotDiv } from "../Common/Common.styles";
 import { usePassengerData } from "../../context/PassengerDataContext";
 
-
 const Histogram: React.FC = () => {
   const { passengers, loading } = usePassengerData();
 
   const data = passengers;
 
-  const survivalData = [1, 2, 3].map((pclass) => ({
-    class: pclass,
-    survived: passengers.filter((p) => p.pclass === pclass && p.survived === 1)
+  const survivedData = data
+    .filter((p) => p.survived === 1)
+    .map((p) => p.pclass);
+  const notSurvivedData = data
+    .filter((p) => p.survived === 0)
+    .map((p) => p.pclass);
+
+  const classTotals = [1, 2, 3].map((cls) => ({
+    class: cls,
+    total: data.filter((p) => p.pclass === cls).length,
+    survived: data.filter((p) => p.pclass === cls && p.survived === 1)
       .length,
-    total: passengers.filter((p) => p.pclass === pclass).length,
   }));
+
+ const plotData = [
+   {
+     x: survivedData,
+     type: "histogram",
+     name: "Survived",
+     marker: { color: "#2ca02c" }, // Green for survived
+     opacity: 0.7,
+     xbins: {
+       start: 0.5,
+       end: 3.5,
+       size: 1,
+     },
+     // Add text labels showing counts
+     text: classTotals.map((cls) => cls.survived),
+     textposition: "inside",
+     hoverinfo: "x+text",
+     hovertext: classTotals.map(
+       (cls) => `${cls.survived} survived (${(
+         (cls.survived / cls.total) *
+         100
+       ).toFixed(1)}%)`
+     ),
+   },
+   {
+     x: notSurvivedData,
+     type: "histogram",
+     name: "Did Not Survive",
+     marker: { color: "#d62728" }, // Red for didn't survive
+     opacity: 0.7,
+     xbins: {
+       start: 0.5,
+       end: 3.5,
+       size: 1,
+     },
+     // Add text labels showing counts
+     text: classTotals.map((cls) => cls.total - cls.survived),
+     textposition: "inside",
+     hoverinfo: "x+text",
+     hovertext: classTotals.map(
+       (cls) => `${cls.total - cls.survived} did not survive (${(
+         ((cls.total - cls.survived) / cls.total) *
+         100
+       ).toFixed(1)}%)`
+     ),
+   },
+ ] as unknown as Plotly.Data[];
 
   return (
     <PlotDiv>
@@ -26,45 +79,38 @@ const Histogram: React.FC = () => {
 
       {!loading && data.length > 0 && (
         <Plot
-          data={[
-            {
-              y: survivalData.map((d) => d.survived),
-              x: survivalData.map((d) => `Class ${d.class}`),
-              type: "histogram",
-              name: "Survivors",
-              marker: {
-                color: survivalData.map((d) =>
-                  d.class === 1
-                    ? "#1f77b4"
-                    : d.class === 2
-                    ? "#ff7f0e"
-                    : "#2ca02c"
-                ),
-                pattern: { shape: "/" },
-              },
-              hovertext: survivalData.map(
-                (d) =>
-                  `${d.survived} of ${d.total} survived (${(
-                    (d.survived / d.total) *
-                    100
-                  ).toFixed(1)}%)`
-              ),
-              hoverinfo: "text",
-            },
-          ]}
+          data={plotData}
           layout={{
-            title: "Titanic Survivors by Passenger Class",
-            yaxis: { title: "Number of Survivors" },
+            title: "Titanic Survival Counts by Passenger Class",
             xaxis: {
               title: "Passenger Class",
-              type: "category", 
+              tickvals: [1, 2, 3],
+              ticktext: ["First Class", "Second Class", "Third Class"],
             },
-            bargap: 0.3,
-            hovermode: "x unified",
-            showlegend: true,
+            yaxis: {
+              title: "Number of Passengers",
+            },
+            barmode: "overlay",
+            bargap: 0.1,
+            hovermode: "closest",
+            legend: {
+              orientation: "h",
+              y: 1.1,
+            },
+            annotations: classTotals.map((cls) => ({
+              x: cls.class,
+              y:
+                cls.total + Math.max(...classTotals.map((c) => c.total)) * 0.05,
+              text: `Total: ${cls.total}`,
+              showarrow: false,
+              font: {
+                size: 12,
+                color: "black",
+              },
+            })),
           }}
           config={{ responsive: true }}
-          style={{ width: "100%", height: "85vh" }}
+          style={{ width: "100%", height: "80vh" }}
         />
       )}
     </PlotDiv>

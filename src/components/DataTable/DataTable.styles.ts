@@ -1,7 +1,6 @@
 import styled from "styled-components"
 import { TableContainerProps } from "./DataTable.d"
 
-
 export const TableContainer = styled.div<TableContainerProps>`
   width: ${({ isMobile, sidebarOpen }) =>
     isMobile
