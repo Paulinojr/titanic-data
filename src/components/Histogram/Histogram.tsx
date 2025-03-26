@@ -45,14 +45,14 @@ const Histogram: React.FC<HistogramProps> = ({ passengers }) => {
         ]}
         layout={{
           title: "Titanic Survivors by Passenger Class",
-          xaxis: { title: "Number of Survivors" },
-          yaxis: {
+          yaxis: { title: "Number of Survivors" },
+          xaxis: {
             title: "Passenger Class",
             type: "category", // Ensures classes stay discrete
           },
           bargap: 0.3,
-          hovermode: "y unified",
-          showlegend: false,
+          hovermode: "x unified",
+          showlegend: true,
         }}
         config={{ responsive: true }}
         style={{ width: "100%", height: "100vh" }}

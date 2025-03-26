@@ -16,7 +16,6 @@ const DataTable: React.FC<DataTableProps> = ({ data, isMobile, sidebarOpen }) =>
   // Data formatting functions
   const formatSurvived = (value: number) => value ? '✅' : '❌';
   const formatPclass = (value: number) => `Class ${value}`;
-  const formatFamilySize = (sibSp: number, parch: number) => sibSp + parch;
 
   // Pagination logic
   const indexOfLastItem = currentPage * itemsPerPage;
@@ -58,21 +57,35 @@ const DataTable: React.FC<DataTableProps> = ({ data, isMobile, sidebarOpen }) =>
         <StyledTable>
           <thead>
             <tr>
-              <Th>Name</Th>
-              <Th>Class</Th>
-              <Th>Age</Th>
+              <Th>Passenger ID</Th>
               <Th>Survived</Th>
-              <Th>Family Size (Parch + SibSp)</Th>
+              <Th>Class</Th>
+              <Th>Name</Th>
+              <Th>Sex</Th>
+              <Th>Age</Th>
+              <Th>SibSp</Th>
+              <Th>Parch</Th>
+              <Th>Ticket</Th>
+              <Th>Fare</Th>
+              <Th>Cabin</Th>
+              <Th>Embarked</Th>
             </tr>
           </thead>
           <tbody>
             {currentItems.map((passenger, index) => (
               <tr key={index}>
-                <Td>{passenger.name}</Td>
-                <Td>{formatPclass(passenger.pclass)}</Td>
-                <Td>{passenger.age || "Unknown"}</Td>
+                <Td>{passenger.passengerId}</Td>
                 <Td>{formatSurvived(passenger.survived)}</Td>
-                <Td>{formatFamilySize(passenger.sibSP, passenger.parch)}</Td>
+                <Td>{formatPclass(passenger.pclass)}</Td>
+                <Td>{passenger.name}</Td>
+                <Td>{passenger.sex}</Td>
+                <Td>{passenger.age || "Unknown"}</Td>
+                <Td>{passenger.sibSP}</Td>
+                <Td>{passenger.parch}</Td>
+                <Td>{passenger.ticket}</Td>
+                <Td>{passenger.fare}</Td>
+                <Td>{passenger.cabin}</Td>
+                <Td>{passenger.embarked}</Td>
               </tr>
             ))}
           </tbody>

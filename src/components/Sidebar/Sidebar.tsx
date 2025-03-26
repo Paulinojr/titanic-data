@@ -13,7 +13,7 @@ import { SidebarProps } from "./Sidebar.d";
 import { FaTimes, FaBars, FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 const Sidebar: React.FC<SidebarProps> = ({ isMobile, setSidebarOpen }) => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(isMobile ? false : true);
 
   const toggleSidebar = () => {
     setIsOpen(!isOpen);

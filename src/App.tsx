@@ -9,8 +9,6 @@ import LineGraph from "./components/LineGraph/LineGraph";
 import DataTable from "./components/DataTable/DataTable";
 import Histogram from "./components/Histogram/Histogram";
 
-
-
 const MainContent = styled.div<{ $sidebarOpen: boolean; $isMobile: boolean }>`
   margin-left: ${({ $isMobile, $sidebarOpen }) =>
     $isMobile ? "0" : $sidebarOpen ? "20%" : "60px"};
@@ -20,7 +18,7 @@ const MainContent = styled.div<{ $sidebarOpen: boolean; $isMobile: boolean }>`
 
 const App: React.FC = () => {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
-  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [sidebarOpen, setSidebarOpen] = useState(isMobile ? false : true);
 
   useEffect(() => {
     const handleResize = () => {
