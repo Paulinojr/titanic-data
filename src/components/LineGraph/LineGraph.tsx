@@ -1,6 +1,7 @@
 import React from "react";
 import Plot from "react-plotly.js";
 import { Passenger } from "../../data/Passenger";
+import { PageTitle } from "../Common/Common.styles";
 
 interface LineGraphProps {
   passengers: Passenger[];
@@ -15,6 +16,8 @@ const LineGraph: React.FC<LineGraphProps> = ({ passengers }) => {
 
   return (
     <div style={{ width: "80vw", height: "100%", padding: "1rem" }}>
+      <PageTitle>Titanic Line Graph</PageTitle>
+
       <Plot
         data={[
           {

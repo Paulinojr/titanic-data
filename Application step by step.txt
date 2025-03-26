@@ -5,3 +5,5 @@
 5. Installed styled-components and react-router
 6. Started developing the Sidebar component
 7. Developed DataTable component
+8. Developed LineGraph using plotly
+9. Developed Histogram using plotly

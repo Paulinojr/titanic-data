@@ -7,6 +7,7 @@ import styled from "styled-components";
 // components
 import LineGraph from "./components/LineGraph/LineGraph";
 import DataTable from "./components/DataTable/DataTable";
+import Histogram from "./components/Histogram/Histogram";
 
 
 
@@ -51,6 +52,11 @@ const App: React.FC = () => {
             <Route
               path="/line-graph"
               element={<LineGraph passengers={passengers} />}
+            />
+
+            <Route
+              path="/histogram"
+              element={<Histogram passengers={passengers} />}
             />
           </Routes>
         </MainContent>
