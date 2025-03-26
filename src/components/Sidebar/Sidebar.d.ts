@@ -8,4 +8,5 @@ export interface SidebarProps {
 
 export interface SidebarLinkProps {
   visible?: boolean;
+  active?: boolean;
 }

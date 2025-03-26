@@ -60,7 +60,7 @@ const DataTable: React.FC<DataTableProps> = ({ data, isMobile, sidebarOpen }) =>
               <Th>Passenger ID</Th>
               <Th>Survived</Th>
               <Th>Class</Th>
-              <Th>Name</Th>
+              <Th style={{ width: "200px" }}>Name</Th>
               <Th>Sex</Th>
               <Th>Age</Th>
               <Th>SibSp</Th>
@@ -77,7 +77,7 @@ const DataTable: React.FC<DataTableProps> = ({ data, isMobile, sidebarOpen }) =>
                 <Td>{passenger.passengerId}</Td>
                 <Td>{formatSurvived(passenger.survived)}</Td>
                 <Td>{formatPclass(passenger.pclass)}</Td>
-                <Td>{passenger.name}</Td>
+                <Td style={{ width: "200px" }}>{passenger.name}</Td>
                 <Td>{passenger.sex}</Td>
                 <Td>{passenger.age || "Unknown"}</Td>
                 <Td>{passenger.sibSP}</Td>

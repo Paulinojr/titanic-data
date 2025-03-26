@@ -79,6 +79,8 @@ export const SidebarLink = styled(Link)<SidebarLinkProps>`
   border-radius: 4px;
   gap: 0.5rem;
 
+  background-color: ${({ active }) => (active ? "#ddd" : "transparent")};
+
   &:hover {
     background-color: #ddd;
   }

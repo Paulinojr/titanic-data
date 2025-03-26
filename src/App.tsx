@@ -1,5 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Navigate,
+} from "react-router-dom";
 import Sidebar from "./components/Sidebar/Sidebar";
 import { passengerData as passengers } from "./data/titanic-passengers";
 import styled from "styled-components";
@@ -36,8 +41,10 @@ const App: React.FC = () => {
 
         <MainContent $sidebarOpen={sidebarOpen} $isMobile={isMobile}>
           <Routes>
+            <Route path="/" element={<Navigate to="/data-table" />} />
+            
             <Route
-              path="/"
+              path="/data-table"
               element={
                 <DataTable
                   data={passengers}

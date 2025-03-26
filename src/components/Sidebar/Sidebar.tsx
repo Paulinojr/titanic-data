@@ -9,11 +9,15 @@ import {
   CollapseButton,
 } from "./Sidebar.styles";
 import { SidebarProps } from "./Sidebar.d";
+import { useLocation } from "react-router-dom";
+
 
 import { FaTimes, FaBars, FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 const Sidebar: React.FC<SidebarProps> = ({ isMobile, setSidebarOpen }) => {
   const [isOpen, setIsOpen] = useState(isMobile ? false : true);
+
+  const location = useLocation();
 
   const toggleSidebar = () => {
     setIsOpen(!isOpen);
@@ -51,6 +55,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isMobile, setSidebarOpen }) => {
                 to="/"
                 onClick={handleLinkClick}
                 visible={isMobile}
+                active={location.pathname === "/data-table"}
               >
                 Data Table
               </SidebarLink>
@@ -59,6 +64,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isMobile, setSidebarOpen }) => {
                 to="/line-graph"
                 onClick={handleLinkClick}
                 visible={ isMobile}
+                active={location.pathname === "/line-graph"}
               >
                 Line Graph
               </SidebarLink>
@@ -67,6 +73,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isMobile, setSidebarOpen }) => {
                 to="/histogram"
                 onClick={handleLinkClick}
                 visible={ isMobile}
+                active={location.pathname === "/histogram"}
               >
                 Histogram
               </SidebarLink>
