@@ -55,7 +55,7 @@ const LineGraph: React.FC<LineGraphProps> = ({isMobile}) => {
           responsive: true,
           displayModeBar: true,
         }}
-        style={{ width: "100%", height: "100vh" }}
+        style={{ width: "100%", height: isMobile ? "80vh" : "800px" }}
       />
       )}
     </PlotDiv>

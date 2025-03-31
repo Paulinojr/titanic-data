@@ -111,7 +111,7 @@ const Histogram: React.FC<HistogramProps> = ({isMobile}) => {
             })),
           }}
           config={{ responsive: true }}
-          style={{ width: "100%", height: "80vh" }}
+          style={{ width: "100%", height: isMobile ? "80vh" : "800px" }}
         />
       )}
     </PlotDiv>
