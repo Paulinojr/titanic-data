@@ -52,7 +52,7 @@ const App: React.FC = () => {
               path="/line-graph"
               element={
                 <PassengerDataProvider>
-                  <LineGraph/>
+                  <LineGraph isMobile={isMobile}/>
                 </PassengerDataProvider>
               }
             />
@@ -61,7 +61,7 @@ const App: React.FC = () => {
               path="/histogram"
               element={
                 <PassengerDataProvider>
-                  <Histogram />
+                  <Histogram isMobile={isMobile} />
                 </PassengerDataProvider>
               }
             />

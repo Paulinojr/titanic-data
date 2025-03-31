@@ -2,9 +2,9 @@ import React from "react";
 import Plot from "react-plotly.js";
 import { PageTitle, PlotDiv } from "../Common/Common.styles";
 import { usePassengerData } from "../../context/PassengerDataContext";
+import { LineGraphProps } from "./LineGraph.d";
 
-
-const LineGraph: React.FC = () => {
+const LineGraph: React.FC<LineGraphProps> = ({isMobile}) => {
   const { passengers, loading } = usePassengerData();
 
   const data = passengers;
@@ -16,7 +16,7 @@ const LineGraph: React.FC = () => {
   const sortedData = [...validPassengers].sort((a, b) => Number(a.age) - Number(b.age));
 
   return (
-    <PlotDiv>
+    <PlotDiv isMobile={isMobile}>
       <PageTitle>Titanic Line Graph</PageTitle>
 
       {loading && <div>Loading...</div>}

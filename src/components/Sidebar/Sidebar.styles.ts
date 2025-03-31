@@ -12,7 +12,7 @@ export const SidebarContainer = styled.div<SidebarProps>`
   ${({ isMobile, isOpen }) =>
     isMobile
       ? `
-        width: ${isOpen ? "100%" : "0"};
+        width: ${isOpen ? "100vw" : "0"};
         left: ${isOpen ? "0" : "-100%"};
       `
       : `

@@ -19,8 +19,10 @@ export const FlexDiv = styled.div`
   display: flex;
 `;
 
-export const PlotDiv = styled.div`
-  width: 80vw;
+export const PlotDiv = styled.div<{
+  isMobile?: boolean;
+}>`
+  width: ${({ isMobile }) => (isMobile ? "100vw" : "80vw")};
   height: 100%;
-  padding: 1rem;
+  padding: ${({ isMobile }) => (isMobile ? "1rem 0" : "1rem")};
 `;

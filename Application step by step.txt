@@ -10,3 +10,4 @@
 10. Add "Active" logic on sidebar items.
 11. Add Context API to simulate REST API architecture.
 12. General tweaks and improvements like centralizing data and styled-components.
+13. Fixed responseviness

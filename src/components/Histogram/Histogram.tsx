@@ -2,8 +2,9 @@ import React from "react";
 import Plot from "react-plotly.js";
 import { PageTitle, PlotDiv } from "../Common/Common.styles";
 import { usePassengerData } from "../../context/PassengerDataContext";
+import { HistogramProps } from "./Histogram.d";
 
-const Histogram: React.FC = () => {
+const Histogram: React.FC<HistogramProps> = ({isMobile}) => {
   const { passengers, loading } = usePassengerData();
 
   const data = passengers;
@@ -70,7 +71,7 @@ const Histogram: React.FC = () => {
  ] as unknown as Plotly.Data[];
 
   return (
-    <PlotDiv>
+    <PlotDiv isMobile={isMobile}>
       <PageTitle>Titanic Histogram</PageTitle>
 
       {loading && <div>Loading...</div>}

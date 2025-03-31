@@ -13,13 +13,13 @@ export const TableContainer = styled.div<TableContainerProps>`
     isMobile &&
     `
     position: fixed;
-    top: 60px; /* Adjust based on your header height */
+    top: 60px;
     left: 0;
     right: 0;
     bottom: 0;
     overflow: auto;
     -webkit-overflow-scrolling: touch;
-    overscroll-behavior: contain; /* Prevent parent scrolling */
+    overscroll-behavior: contain;
   `}
   transition: all 0.3s ease;
 `;
