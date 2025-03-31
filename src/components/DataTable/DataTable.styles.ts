@@ -1,15 +1,14 @@
-import styled from "styled-components"
-import { TableContainerProps } from "./DataTable.d"
+import styled from "styled-components";
+import { TableContainerProps } from "./DataTable.d";
 
 export const TableContainer = styled.div<TableContainerProps>`
   width: ${({ isMobile, sidebarOpen }) =>
     isMobile
-      ? "100vw"
+      ? "100%"
       : sidebarOpen
       ? "calc(100% - 200px)"
       : "calc(100vw - 100px)"};
-  overflow-x: auto;
-  max-height: ${({ isMobile }) => (isMobile ? "70vh" : "none")};
+  padding: ${({ isMobile }) => (isMobile ? "1rem" : "0")};
   ${({ isMobile }) =>
     isMobile &&
     `
@@ -25,11 +24,35 @@ export const TableContainer = styled.div<TableContainerProps>`
   transition: all 0.3s ease;
 `;
 
-export const StyledTable = styled.table`
+export const TableScrollDiv = styled.div`
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+`;
+
+export const StyledTable = styled.table<{ isMobile: boolean }>`
   width: 100%;
   min-width: 600px;
   border-collapse: collapse;
   table-layout: fixed;
+
+  ${({ isMobile }) =>
+    isMobile &&
+    `
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    white-space: nowrap;
+    border-spacing: 0;
+
+    tr{
+      padding: 0.75rem;
+      border: 1px solid #ddd;
+      white-space: nowrap;
+      min-width: 1000px;
+    }
+    th, td {
+       width: 100px;
+    }
+  `}
 `;
 
 export const Th = styled.th`

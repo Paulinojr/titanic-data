@@ -9,6 +9,7 @@ import {
   TopPaginationContainer,
   ItemsPerPageSelect,
   PageIndicator,
+  TableScrollDiv,
 } from "./DataTable.styles";
 import { PageTitle, PlotDiv } from "../Common/Common.styles";
 import { usePassengerData } from "../../context/PassengerDataContext";
@@ -65,42 +66,44 @@ const DataTable: React.FC<DataTableProps> = ({ isMobile, sidebarOpen }) => {
               </PageIndicator>
             </TopPaginationContainer>
 
-            <StyledTable>
-              <thead>
-                <tr>
-                  <Th>Passenger ID</Th>
-                  <Th>Survived</Th>
-                  <Th>Class</Th>
-                  <Th style={{ width: "200px" }}>Name</Th>
-                  <Th>Sex</Th>
-                  <Th>Age</Th>
-                  <Th>SibSp</Th>
-                  <Th>Parch</Th>
-                  <Th>Ticket</Th>
-                  <Th>Fare</Th>
-                  <Th>Cabin</Th>
-                  <Th>Embarked</Th>
-                </tr>
-              </thead>
-              <tbody>
-                {currentItems.map((passenger, index) => (
-                  <tr key={index}>
-                    <Td>{passenger.passengerId}</Td>
-                    <Td>{formatSurvived(passenger.survived)}</Td>
-                    <Td>{formatPclass(passenger.pclass)}</Td>
-                    <Td style={{ width: "200px" }}>{passenger.name}</Td>
-                    <Td>{passenger.sex}</Td>
-                    <Td>{passenger.age || "Unknown"}</Td>
-                    <Td>{passenger.sibSP}</Td>
-                    <Td>{passenger.parch}</Td>
-                    <Td>{passenger.ticket}</Td>
-                    <Td>{passenger.fare}</Td>
-                    <Td>{passenger.cabin}</Td>
-                    <Td>{passenger.embarked}</Td>
+            <TableScrollDiv>
+              <StyledTable isMobile={isMobile}>
+                <thead>
+                  <tr>
+                    <Th>Passenger ID</Th>
+                    <Th>Survived</Th>
+                    <Th>Class</Th>
+                    <Th style={{ width: isMobile ? "" : "200px" }}>Name</Th>
+                    <Th>Sex</Th>
+                    <Th>Age</Th>
+                    <Th>SibSp</Th>
+                    <Th>Parch</Th>
+                    <Th>Ticket</Th>
+                    <Th>Fare</Th>
+                    <Th>Cabin</Th>
+                    <Th>Embarked</Th>
                   </tr>
-                ))}
-              </tbody>
-            </StyledTable>
+                </thead>
+                <tbody>
+                  {currentItems.map((passenger, index) => (
+                    <tr key={index}>
+                      <Td>{passenger.passengerId}</Td>
+                      <Td>{formatSurvived(passenger.survived)}</Td>
+                      <Td>{formatPclass(passenger.pclass)}</Td>
+                      <Td style={{ width: "200px" }}>{passenger.name}</Td>
+                      <Td>{passenger.sex}</Td>
+                      <Td>{passenger.age || "Unknown"}</Td>
+                      <Td>{passenger.sibSP}</Td>
+                      <Td>{passenger.parch}</Td>
+                      <Td>{passenger.ticket}</Td>
+                      <Td>{passenger.fare}</Td>
+                      <Td>{passenger.cabin}</Td>
+                      <Td>{passenger.embarked}</Td>
+                    </tr>
+                  ))}
+                </tbody>
+              </StyledTable>
+            </TableScrollDiv>
 
             <PaginationContainer>
               <div>
